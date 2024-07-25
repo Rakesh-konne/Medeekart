@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    profile
+{% endblock title %}
+
+{% block main-content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact us</title>
+    <style>
+        #contact h1{
+            color: blue;
+            text-align: center;
+        }
+        #contact h2{
+            color: brown;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body style="background-color: bisque;">
+<div style="display:flex;flex-direction: row;">
+    <div id="contact">
+        <h1>Contact Us - RK Hospitals</h1>
+        <h2> Contact Details:</h2>
+        <p>
+            <b>Address: </b> 123 Main Street, hyderabad, Telengana, 500075 <br>
+           <b>Phone: </b> +1 123-456-7890 <br>
+            <b> Email:</b><a href="#">info@rkhospitals.com</a> <br>
+        </p>
+        <h2>Contact Form:</h2> 
+        Please fill out the form below to get in touch with us. Our team will respond to your inquiry as soon as possible.
+        <form action=" " method="POST">
+            <div>
+              <label for="name"><b>Name:</b> </label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+              <label for="email"><b>Email:</b></label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+              <label for="message"><b>Message:</b></label><br>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <a href="{% url 'home' %}" type="button"  class="btn btn-primary">Submit</a>
+          </form>  
+    </div>
+    <div>
+        <img src="https://yt3.ggpht.com/a/AATXAJxSgj3ZXUjDu9eoKtBciB-yvJiw2Hst3leeiA=s900-c-k-c0xffffffff-no-rj-mo" alt="tkimage" style="padding-left: 40px;padding-top: 80px;" height="250px">
+    </div>
+</div>
+</body>
+</html>
+{% endblock main-content %}

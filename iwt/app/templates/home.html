@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {% endblock title %}
+
+
+{% block main-content %}
+<div _ngcontent-dup-c61="" class="d-flex justify-content-center flex-wrap" style="background-color: blanchedalmond;">
+  <div class="colum1"><a  href="{% url 'category' 'SkinCare' %}"><img src="https://www.click2clinic.com/assets/images/services/medicinedelivery.svg" alt="Medicine Delivery"><p>Epharmacy</p></a></div>
+</div>
+{% endblock main-content %}
+
+ {% block banner_slider %}
+
+  <div id="carouselAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner w-90 " >
+    <div class="carousel-item active">
+      <img src="{% static 'images\medicine-delivery-banner.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images\patient-doctor-online-consultation..jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images\Blood-test.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images\Hospital-Wallpaper.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+  
+{% endblock banner_slider %}
+
+{% block info %}
+<div id="tp">
+  <p><b>Order Medicines & Health Products Online :</b> <br>
+    India's most reliable Online Medical Store
+    Find and buy medicines online with our Pharmacy. Browse through prescription medicines, OTC products, health & wellness products on an online pharmacy that provides hassle free service across 100+ cities in India With an extensive catalogue of medicines and healthcare products provided on an extensive and easy to navigate destination for online medicine shopping, Our Pharmacy provides added advantages which include:
+    <br><b>prescription refill:</b>  Set up scheduled refills for your online medicine orders and never worry about running out of your meds
+    <br><b>Doorstep delivery:</b> No more trips to the pharmacy, with on-time delivery of your medicines right to your doorstep
+    <br><b>Medicine order history:</b> No more scrolling through pages to find what you need. Just check your medicine order history and re-order
+    <br><b>Exclusive offers and discounts:</b>Enjoy cashbacks, flat discounts and other exclusive offers on your medicine orders
+    </p>
+</div>
+
+<div class="container"  style="background-color:bisque">
+  <img class="img-fluid" src="https://www.practostatic.com/ecommerce-assets/static/media/home/desktop/full-width-4.2a2a16cc.png" alt="btmimg">
+</div>
+
+{% endblock info %}
+
+{% block btm-info %}
+<div  class="d-sm-flex justify-content-between "id="btm" col-2 style="background-color: darksalmon;">
+  <div  class="colum1">
+    <ul >
+      <li ><a href="/about">About Us</a></li>
+      <li ><a href="/team">Our Team</a></li>
+      <li ><a href="/blog-list">Blog</a></li>
+      <li ><a href="/workwithus">Work with us</a></li>
+      <li ><a href="/contact">Contact Us</a></li>
+    </ul>
+  </div>
+  <div  class="colum2">
+    <ul >
+      <li ><a href="/services">Services</a></li>
+      <li ><a href="/faq">FAQ's</a></li>
+      <li ><a href="/news">News Room </a></li>
+      <li ><a href="/promotions">Promotions &amp; More</a></li>
+      <li ><a href="/termsandconditions">Terms &amp; Conditions </a></li>
+    </ul>
+  </div>
+  <div  class="colum3">
+    <ul >
+      <li ><a href="/bookservice">Book a Service</a></li>
+      <li ><a href="/enquirenow">Enquire Now</a></li>
+      <li ><a href="/nriplans">NRI Plans</a></li>
+      <li ><a href="/refer">Refer a Patient</a></li>
+    </ul>
+  </div>
+  <div  class="colum5">
+    <h1>Follow us on:</h1>
+    <ul>
+      <li><img src="https://pngimg.com/uploads/facebook_logos/facebook_logos_PNG19757.png" width="30px" alt="fbimg"> </li>
+      <li> <img src="https://clipart.info/images/ccovers/1590430652red-youtube-logo-png-xl.png" width="30px" alt="youtube"></li>
+      <li><img src="https://i2.wp.com/www.multarte.com.br/wp-content/uploads/2019/03/logo-instagram-png-fundo-transparente13.png?fit=2400,2400&ssl=1" width="30px" alt="instaimg"></li>
+      <li><img src="https://th.bing.com/th/id/R.21fba12531ac377e1642a01921db9fbd?rik=ErbH90Kfy3L6tg&riu=http%3a%2f%2fencomium.ng%2fwp-content%2fuploads%2f2016%2f01%2fLinkedIn-Logo.png&ehk=qo9l10kLERwTTr5WEWyHeVR%2bKIWh4CchVBnnAxyz3ic%3d&risl=&pid=ImgRaw&r=0" width="30px" alt="linkedin"></li>
+      <li><img src="https://www.pngkey.com/png/full/2-27646_twitter-logo-png-transparent-background-logo-twitter-png.png" width="30px" alt="twitterimg"></li>
+    </ul>
+  </div>
+  </div>
+</div>
+<footer class="container-fluid bg-success  text-center p-2 ">
+  Copyright: 2023 || Developed by :Rk
+</footer>
+{% endblock btm-info %}

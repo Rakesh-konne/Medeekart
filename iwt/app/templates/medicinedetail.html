@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+   Medicine details
+{% endblock title %}
+
+{% block main-content %}
+
+    <div class="container my-5">
+        <div class="row flex justify-content-between">
+            <div class="img2 col-lg-5 mt-5">
+                 <h1 style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 50px;">{{medicine.name}}</h1>
+                 <img src="{{medicine.image}}"  class="img-fluid img-thumbnail shadow-sm"  width="400px" height="270px" alt="">
+                 <h4>Rs.{{medicine.price}}/-</h4>
+                 <br><br>
+            </div>
+            <div class="product-detail col-lg-5">
+           
+            <h4>Medicine details</h4>
+            <ul class="fs-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+                <li>{{medicine.description}}</li>
+            </ul>
+            <h4>Medicine Dosage:</h4>
+            <ul class="fs-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+                <li>{{medicine.dosage}}</li>
+                <li>{{medicine.id}}</li>
+            </ul>
+                <form action="/add-to-cart" class="d-line">
+                    <input type="hidden" name="med_id" value={{medicine.id}}>
+                    <button type="submit" class="btn btn-primary shadow px-5 py-2">Add to Cart</button>
+                    <span><a href="{% url 'showcart' %}" class="btn btn-warning shadow px-5 py-3 ms-4">Buy Now</a></span>
+                </form>
+                 
+            </div>
+        </div>
+    </div>
+{% endblock main-content %}

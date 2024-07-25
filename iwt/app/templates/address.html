@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Address
+{% endblock title %}
+
+{% block main-content %}
+<div class="container my-4">
+    <div class="row">
+        <h3>Welcome <span class="text-capitalize">{{request.user}}</span></h3>
+        <div class="col-sm-2 border-end">
+            <ul class="list-unstyled">
+                <li class="d-grid my-3"><a href="{% url 'profile' %}" class="btn">Add New <br>Profile-address</a></li>
+                <li class="d-grid"><a href="{% url 'address' %}" class="btn btn-primary">Saved <br>Profile--Address</a></li>
+                <li class="d-grid"><a href="{% url 'passwordchange' %}" class="btn">Change Password</a></li>
+                <li class="d-grid"><a href="{% url 'logout' %}" class="btn">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-8 offset-sm-1">
+            <div class="row">
+                {% for ad in add %}
+                <div class="col-sm-6">
+                    <div class="card m-2">
+                        <div class="card-body">
+                            <h3>Address {{forloop.counter}}</h3>
+                            <p>Name:{{ad.name}}</p>
+                            <p>Locality:{{ad.locality}}</p>
+                            <p>Mobile:{{ad.mobile}}</p>
+                            <p>City:{{ad.city}}</p>
+                            <p>State:{{ad.state}}</p>
+                            <p>Pincode:{{ad.zipcode}}</p>
+                            <p class="text-center"><a href="{% url 'updateaddress' pk=ad.id %}" type="button" class="btn btn-success">Update</a></p>
+                            
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+{% endblock main-content %}

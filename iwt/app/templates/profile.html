@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    profile
+{% endblock title %}
+
+{% block main-content %}
+<div class="container my-4">
+    <div class="row">
+        <h3>Welcome <span class="text-capitalize">{{request.user}}</span></h3>
+        <div class="col-sm-2 border-end">
+            <ul class="list-unstyled">
+                <li class="d-grid my-3"><a href="{% url 'profile' %}" class="btn btn-primary">Add New <br>Profile-address</a></li>
+                <li class="d-grid"><a href="{% url 'address' %}" class="btn">Saved <br>Profile--Address</a></li>
+                <li class="d-grid"><a href="{% url 'passwordchange' %}" class="btn">Change Password</a></li>
+                <li class="d-grid"><a href="{% url 'logout' %}" class="btn">Logout</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-8 offset-sm-1" >
+            <form action="" method="POST">
+                {% csrf_token %}
+                {% for fm in form %}
+                    {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small><br>
+                {% endfor %}
+                <div>
+                    <button type="submit" class="btn btn-primary"> Submit</button>
+                </div>
+                {% if form.non_filed_errors %}
+                    {% for error in form.non_filed_errors %}
+                        <p class="alert alert-danger my-3">{{error}}</p>
+                    {% endfor %}
+                {% endif %}
+
+                {% if messages %}
+                {% for msg in messages %}
+                <div class="alert alert-{{msg.tags}}" role="alert">{{msg}}</div>
+                {% endfor %}
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock main-content%}

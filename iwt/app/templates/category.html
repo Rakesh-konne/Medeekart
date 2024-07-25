@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+   Catageory
+{% endblock title %}
+
+{% block main-content %}
+
+
+<div class="container my-4">
+    <div class = "row">
+                {% for med in medicine %}
+                    <div class="col-md-3 text-center mb-4">
+                            <a href="{% url 'medicine-detail' med.id %}"><img src= "{{med.image}}" width="300px" height="200px" alt="..."></a>
+                            <div class="fw.bold">{{med.name}}</div>
+                            <div class="fw bold text-danger">
+                                Rs.{{med.price}}/- 
+                            </div>
+                    </div>
+                {% endfor %} 
+    </div> 
+</div>
+
+{% endblock main-content %}
+
+    
