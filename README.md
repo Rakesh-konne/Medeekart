@@ -11,7 +11,7 @@ This project is an online medicine store developed using Django. Users can regis
 ## Features
 
 - User registration and authentication
-- View and search for medicines categorized as Fever, Diabetes, Wellness & Fitness, Skincare, Babycare, etc.
+- View for medicines categorized as Fever, Diabetes, Wellness & Fitness, Skincare, Babycare, etc.
 - Add medicines to the cart
 - Checkout and make payments using PayU
 
