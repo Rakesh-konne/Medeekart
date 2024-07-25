@@ -1,4 +1,4 @@
-# MedeeKart 
+# MedeeKart [LIVE](https://medeekart-i87e.onrender.com)
 
 This project is an online medicine store developed using Django. Users can register, login, view a list of featured and categorized medicines, add medicines to their cart, and make purchases using the PayU payment gateway.
 
@@ -113,11 +113,7 @@ This project is an online medicine store developed using Django. Users can regis
        ├── tests.py
        ├── views.py
        └── urls.py
-    
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+  
 
 ## Contributing
 
