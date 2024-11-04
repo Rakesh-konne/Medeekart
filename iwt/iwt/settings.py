@@ -81,10 +81,10 @@ WSGI_APPLICATION = "iwt.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  # Ensure this is set to PostgreSQL
-        'NAME': 'dbformedeekart',
-        'USER': 'dbformedeekart_user',
-        'PASSWORD': 'my7tK1pyh47K2JGalbAonIahn1XFsXcw',
-        'HOST': 'dpg-cra0fm8gph6c73d8crv0-a',
+        'NAME': 'medtechdb',
+        'USER': 'medtechdb_user',
+        'PASSWORD': 'EmA2OVfIl2t5LRr3OkYFsVq2UzT7TdKs',
+        'HOST': 'dpg-csk91lpu0jms73b7ptag-a',
         'PORT': '5432',
     }
     }
