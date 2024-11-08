@@ -264,7 +264,7 @@ def backhomepage(request):
     cart=Cart.objects.filter(user=user)
     for c in cart:
         c.delete();
-    return redirect(Homepage)
+    return redirect('Homepage')
 
 def payu_demo(request):
     user = request.user
