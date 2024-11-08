@@ -251,6 +251,8 @@ def generate_hash(data,key, salt):
     return hashlib.sha512(hash_string.encode('utf-8')).hexdigest()
 
 def backhomepage(request):
+    if not request.user.is_authenticated:
+        return redirect('Homepage')
     user=request.user
     add=Customer.objects.filter(user=user)
     cart_items=Cart.objects.filter(user=user)
@@ -265,25 +267,46 @@ def backhomepage(request):
     return redirect(Homepage)
 
 def payu_demo(request):
-    user=request.user
-    add=Customer.objects.filter(user=user)
-    cart_items=Cart.objects.filter(user=user)
-    famount=0
-    for p in cart_items:
-        value=p.quantity*int(p.medicine.price.replace("Rs.", ""))
-        famount=famount + value
-    totalamount=famount + 40
-    cart=Cart.objects.filter(user=user)
-    totalamount=int(totalamount)
+    user = request.user
+    
+    # Check if user is authenticated
+    if not user.is_authenticated:
+        return redirect('Homepage')  # Redirect to homepage if not authenticated
 
-    data = { 'amount': totalamount, 
-            'firstname': 'rk', 
-            'email': 'rk@gmail.com',
-            'phone': '9746272610', 'productinfo': 'product', 
-            'lastname': 'sr', 'address1': 'gandipet', 
-            'address2': 'kokapet', 'city': 'hyd', 
-            'state': 'telangana', 'country': 'india', 
-            'zipcode': '500075', 'udf1': '', 
+    # Fetch the customer's details
+    try:
+        customer = Customer.objects.get(user=user)
+    except Customer.DoesNotExist:
+        customer = None  # Handle case where customer record doesn't exist
+
+    cart_items = Cart.objects.filter(user=user)
+    famount = 0
+    product_names = [] 
+
+    # Calculate total amount
+    for p in cart_items:
+        value = p.quantity * int(p.medicine.price.replace("Rs.", ""))
+        famount += value
+        product_names.append(f"{p.medicine.name} (x{p.quantity})")
+    
+    totalamount = famount + 40  # Add any additional fees
+    totalamount = int(totalamount)
+
+    # Prepare data for payment processing
+    data = {
+        'amount': totalamount,
+        'firstname': customer.name if customer else 'Guest',  # Default to 'Guest' if no customer
+        'email': user.email,  # Use user's email
+        'phone': customer.mobile if customer else '0000000000',  # Default phone if no customer
+        'productinfo': ', '.join(product_names),
+        'lastname': '',  # You can set a default or leave it empty
+        'address1': customer.locality if customer else '',  # Locality as address1
+        'address2': '',  # Set as needed
+        'city': customer.city if customer else '',
+        'state': customer.state if customer else '',
+        'country': 'India',  # Static value, change as necessary
+        'zipcode': customer.zipcode if customer else '000000',
+          'udf1': '', 
             'udf2': '', 'udf3': '', 'udf4': '', 'udf5': '',
             'surl': surl,
             'furl': furl,
