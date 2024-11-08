@@ -252,7 +252,7 @@ def generate_hash(data,key, salt):
 
 def backhomepage(request):
     if not request.user.is_authenticated:
-        return redirect('Homepage')
+        return redirect('home')
     user=request.user
     add=Customer.objects.filter(user=user)
     cart_items=Cart.objects.filter(user=user)
@@ -264,7 +264,7 @@ def backhomepage(request):
     cart=Cart.objects.filter(user=user)
     for c in cart:
         c.delete();
-    return redirect('Homepage')
+    return redirect('home')
 
 def payu_demo(request):
     user = request.user
