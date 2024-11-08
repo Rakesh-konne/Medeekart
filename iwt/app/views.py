@@ -271,49 +271,43 @@ def payu_demo(request):
     
     # Check if user is authenticated
     if not user.is_authenticated:
-        return redirect('Homepage')  # Redirect to homepage if not authenticated
+        return redirect('home')  # Redirect to homepage if not authenticated
 
-    # Fetch the customer's details
+    cust_id = request.POST.get('custid')  # Ensure 'custid' is sent in the form submission
+
+    # Fetch selected customer details
     try:
-        customer = Customer.objects.get(user=user)
+        customer = Customer.objects.get(id=cust_id)
     except Customer.DoesNotExist:
-        customer = None  # Handle case where customer record doesn't exist
+        return redirect('address')  # Redirect if customer address is not found
 
     cart_items = Cart.objects.filter(user=user)
-    famount = 0
-    product_names = [] 
-
-    # Calculate total amount
-    for p in cart_items:
-        value = p.quantity * int(p.medicine.price.replace("Rs.", ""))
-        famount += value
-        product_names.append(f"{p.medicine.name} (x{p.quantity})")
-    
-    totalamount = famount + 40  # Add any additional fees
-    totalamount = int(totalamount)
+    famount = sum(p.quantity * int(p.medicine.price.replace("Rs.", "")) for p in cart_items)
+    product_names = [f"{p.medicine.name} (x{p.quantity})" for p in cart_items]
+    totalamount = int(famount + 40)  # Include additional fees
 
     # Prepare data for payment processing
     data = {
         'amount': totalamount,
-        'firstname': customer.name if customer else 'Guest',  # Default to 'Guest' if no customer
-        'email': user.email,  # Use user's email
-        'phone': customer.mobile if customer else '0000000000',  # Default phone if no customer
+        'firstname': customer.name,
+        'email': user.email,
+        'phone': customer.mobile,
         'productinfo': ', '.join(product_names),
-        'lastname': '',  # You can set a default or leave it empty
-        'address1': customer.locality if customer else '',  # Locality as address1
-        'address2': '',  # Set as needed
-        'city': customer.city if customer else '',
-        'state': customer.state if customer else '',
-        'country': 'India',  # Static value, change as necessary
-        'zipcode': customer.zipcode if customer else '000000',
-          'udf1': '', 
-            'udf2': '', 'udf3': '', 'udf4': '', 'udf5': '',
-            'surl': surl,
-            'furl': furl,
-        }
-     
-    data.update({"txnid": random.randint(8888888888, 9999999999999)})
-    data['hash'] = generate_hash(data,merchant_key, merchant_salt)
+        'lastname': '',
+        'address1': customer.locality,
+        'city': customer.city,
+        'state': customer.state,
+        'country': 'India',
+        'zipcode': customer.zipcode,
+        'udf1': '', 'udf2': '', 'udf3': '', 'udf4': '', 'udf5': '',
+        'surl': surl,  # Success URL
+        'furl': furl,  # Failure URL
+    }
+    
+    # Generate transaction ID and hash
+    data['txnid'] = random.randint(8888888888, 9999999999999)
+    data['hash'] = generate_hash(data, merchant_key, merchant_salt)
+
     payu_data = payu.transaction(**data)
     return render(request, 'payu_checkout.html', {"posted": payu_data})
     
