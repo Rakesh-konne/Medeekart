@@ -291,7 +291,7 @@ def payu_demo(request):
         'amount': totalamount,
         'firstname': customer.name,
         'email': user.email,
-        'phone': customer.mobile,
+        'phone': customer.mobile if customer and customer.mobile else '0000000000',
         'productinfo': ', '.join(product_names),
         'lastname': '',
         'address1': customer.locality,
