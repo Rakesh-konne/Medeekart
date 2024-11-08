@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-4ll@+hz^4e0lursqvha^vq#6q1zva+l#wj90lo&wocfq*2_zi9"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['medeekart-i87e.onrender.com', 'localhost', '127.0.0.1']
 
@@ -148,12 +148,13 @@ if not DEBUG:    # Tell Django to copy static assets into a path called `staticf
 
 
 LOGIN_URL = 'login/'
+BASE_URL = "http://127.0.0.1:8000" if DEBUG else "https://medeekart-i87e.onrender.com"
 PAYU_CONFIG = {
     "merchant_key": "TBrxxc",
     "merchant_salt": "cQG75SRwnRw022VfOn2kpc46AqRGcYtS",
     "mode": "test",
-    "success_url": "http://127.0.0.1:8000/success",
-    "failure_url": "http://127.0.0.1:8000/failure"
+    "success_url": f"{BASE_URL}/success",
+    "failure_url":f"{BASE_URL}/failure"
 }
 
 # Default primary key field type
