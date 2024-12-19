@@ -83,7 +83,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',  # Ensure this is set to PostgreSQL
         'NAME': 'medtechdb',
         'USER': 'medtechdb_user',
-        'PASSWORD': 'EmA2OVfIl2t5LRr3OkYFsVq2UzT7TdKs',
         'HOST': 'dpg-csk91lpu0jms73b7ptag-a',
         'PORT': '5432',
     }
@@ -150,8 +149,6 @@ if not DEBUG:    # Tell Django to copy static assets into a path called `staticf
 LOGIN_URL = 'login/'
 BASE_URL = "https://medeekart-i87e.onrender.com" if DEBUG else "http://127.0.0.1:8000"
 PAYU_CONFIG = {
-    "merchant_key": "TBrxxc",
-    "merchant_salt": "cQG75SRwnRw022VfOn2kpc46AqRGcYtS",
     "mode": "test",
     "success_url": f"{BASE_URL}/success",
     "failure_url":f"{BASE_URL}/failure"
