@@ -245,7 +245,7 @@ def generate_hash(data,key, salt):
         data.get('udf3', ''),
         data.get('udf4', ''),
         data.get('udf5', ''),
-        '', '', '', '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '',
         salt
     ])
     return hashlib.sha512(hash_string.encode('utf-8')).hexdigest()
