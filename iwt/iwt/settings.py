@@ -78,25 +78,25 @@ WSGI_APPLICATION = "iwt.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',  # Ensure this is set to PostgreSQL
-        'NAME': 'medtechdb',
-        'USER': 'medtechdb_user',
-        'HOST': 'dpg-csk91lpu0jms73b7ptag-a',
-        'PORT': '5432',
-    }
-    }
-
-# import os
-# import dj_database_url
-
 # DATABASES = {
-#     'default': dj_database_url.config(
-#         default=os.getenv('DATABASE_URL'),  # Fetch the database URL from the environment
-#         conn_max_age=600
-#     )
-# }
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',  # Ensure this is set to PostgreSQL
+#         'NAME': 'medtechdb',
+#         'USER': 'medtechdb_user',
+#         'HOST': 'dpg-csk91lpu0jms73b7ptag-a',
+#         'PORT': '5432',
+#     }
+#     }
+
+import os
+import dj_database_url
+DATABASE_URL = os.getenv("DATABASE_URL") 
+DATABASES = {
+    'default': dj_database_url.config(
+        default=DATABASE_URL,  # Fetch the database URL from the environment
+        conn_max_age=600
+    )
+}
 
 
 
