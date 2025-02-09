@@ -150,6 +150,8 @@ LOGIN_URL = 'login/'
 BASE_URL = "https://medeekart-i87e.onrender.com" if DEBUG else "http://127.0.0.1:8000"
 PAYU_CONFIG = {
     "mode": "test",
+    'merchant_key': os.getenv('PAYU_MERCHANT_KEY'),
+    'merchant_salt': os.getenv('PAYU_MERCHANT_SALT'),
     "success_url": f"{BASE_URL}/success",
     "failure_url":f"{BASE_URL}/failure"
 }
