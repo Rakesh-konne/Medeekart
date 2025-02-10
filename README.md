@@ -7,6 +7,7 @@ This project is an online medicine store developed using Django. Users can regis
 
   -The project is deployed on the  [here](https://medeekart-i87e.onrender.com) using render.
   -The database postgresql is connected at the deployment.
+  -The Demo working of the project can be viewed [here](https://drive.google.com/file/d/1-orsd415In5ZRMTtxORcXHEWFWeGhBP7/view?usp=sharing).
   
 ## Features
 
